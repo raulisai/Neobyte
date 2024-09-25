@@ -1,0 +1,67 @@
+:root {
+    --neon-blue: #00f3ff;
+    --neon-green: #39ff14;
+    --neon-violet: #bc13fe;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.text-neon-blue {
+    color: var(--neon-blue);
+}
+
+.bg-neon-blue {
+    background-color: var(--neon-blue);
+}
+
+.hover\:bg-neon-green:hover {
+    background-color: var(--neon-green);
+}
+
+.feature-card, .recommendation-card {
+    @apply bg-gray-800 p-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+}
+
+.feature-card h3, .recommendation-card h3 {
+    @apply text-neon-blue;
+}
+
+#navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(26, 26, 46, 0.8);
+}
+
+#ai-robot {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
