@@ -107,4 +107,33 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(window, {duration: 1, scrollTo: target, ease: 'power2.inOut'});
         });
     });
+
+    // Function to fetch and update recommendations
+    function fetchRecommendations() {
+        fetch('/api/recommendations')
+            .then(response => response.json())
+            .then(data => {
+                const recommendationsContainer = document.querySelector('#recommendations .grid');
+                recommendationsContainer.innerHTML = '';
+                data.forEach(recommendation => {
+                    const card = document.createElement('div');
+                    card.className = 'recommendation-card';
+                    card.innerHTML = `
+                        <h3 class="text-xl font-semibold mb-2">${recommendation.title}</h3>
+                        <p>${recommendation.description}</p>
+                    `;
+                    recommendationsContainer.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error fetching recommendations:', error));
+    }
+
+    // Fetch recommendations on page load
+    fetchRecommendations();
+
+    // Add event listener for refresh button
+    const refreshButton = document.getElementById('refresh-recommendations');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', fetchRecommendations);
+    }
 });

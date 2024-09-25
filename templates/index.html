@@ -67,20 +67,14 @@
 
     <section id="recommendations" class="py-20 bg-gray-800">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-12 text-center">Recommended Content</h2>
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-bold">Recommended Content</h2>
+                <button id="refresh-recommendations" class="bg-neon-blue text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-neon-green transition-colors duration-300">
+                    Refresh
+                </button>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="recommendation-card">
-                    <h3 class="text-xl font-semibold mb-2">AI in Healthcare</h3>
-                    <p>Discover how AI is revolutionizing medical diagnostics and treatment.</p>
-                </div>
-                <div class="recommendation-card">
-                    <h3 class="text-xl font-semibold mb-2">The Future of Robotics</h3>
-                    <p>Explore the latest advancements in robotic technology and automation.</p>
-                </div>
-                <div class="recommendation-card">
-                    <h3 class="text-xl font-semibold mb-2">Natural Language Processing</h3>
-                    <p>Learn about AI-powered language understanding and generation.</p>
-                </div>
+                <!-- Recommendations will be dynamically inserted here -->
             </div>
         </div>
     </section>
