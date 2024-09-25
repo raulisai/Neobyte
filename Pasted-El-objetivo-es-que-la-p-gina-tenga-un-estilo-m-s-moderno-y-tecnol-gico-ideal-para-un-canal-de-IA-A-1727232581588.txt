@@ -1,0 +1,39 @@
+El objetivo es que la página tenga un estilo más moderno y tecnológico, ideal para un canal de IA. Aquí te dejo los elementos claves:
+
+Paleta de colores:
+Tonos oscuros con acentos brillantes (como azul neón, verde esmeralda o violeta eléctrico), para un look más avanzado y futurista.
+Gradientes en los fondos o en botones para dar una sensación de profundidad.
+Tipografía:
+Usar una tipografía sans-serif de aspecto futurista, como Orbitron o Rajdhani, que son elegantes y claras.
+Estilo gráfico:
+Integrar formas geométricas flotantes (círculos, hexágonos, líneas) que se muevan sutilmente en el fondo al hacer scroll, dándole dinamismo al sitio.
+Añadir animaciones sutiles a los textos y botones para que reaccionen cuando el usuario pase el cursor sobre ellos.
+2. Interacciones de Scroll Dinámico (Scroll Animations)
+El scroll dinámico hará que los elementos cambien de posición, tamaño, u opacidad a medida que el usuario se desplaza por la página. Para implementarlo, se puede usar parallax scrolling y efectos de animación:
+
+Secciones con movimiento interactivo:
+Imagen principal (Hero Image): El personaje o ilustración de la página principal podría rotar ligeramente o moverse hacia adelante conforme el usuario hace scroll hacia abajo.
+Texto que aparece: Los títulos y subtítulos de cada sección aparecerían con un efecto de deslizamiento o desvanecimiento desde los lados o desde abajo.
+Contenido flotante: Elementos como los iconos de características (peso, dimensiones, etc.) pueden flotar o moverse lateralmente cuando el usuario llega a esa parte del scroll.
+Ejemplos de efectos a incluir:
+Parallax scrolling: Los elementos de fondo se moverán más lento que los elementos en primer plano, creando una sensación de profundidad.
+Scroll-triggered animations: Las animaciones se activarán solo cuando el usuario llegue a cierto punto de la página, usando librerías como ScrollMagic o GSAP (GreenSock Animation Platform).
+Transformaciones: Imágenes y gráficos que cambian de tamaño o rotan ligeramente a medida que el usuario sigue haciendo scroll.
+Implementación:
+Utilizar librerías como GSAP con su plugin de scroll (ScrollTrigger), que permite controlar animaciones basadas en el progreso de la barra de desplazamiento del usuario.
+3. Interfaz de Usuario (UI) Ajustada
+Barra de Navegación Fija:
+Menú flotante que se queda en la parte superior pero cambia su transparencia o se transforma a medida que el usuario interactúa con la página.
+Elementos Clave:
+Botón de llamada a la acción: Un botón de "Ordenar ahora" o "Explorar más" que tenga animaciones llamativas al interactuar, como un brillo animado que siga el mouse o un efecto de pulsación cuando esté en hover.
+Íconos interactivos: Los iconos de color, peso y dimensiones deben tener un efecto hover animado, que resalte cada característica.
+Diseño Responsive:
+En la versión móvil, los efectos de scroll deben ser más sutiles, pero seguirán presentes en la medida en que sea posible. Las imágenes podrían hacer un ligero desplazamiento al mover la página, pero sin comprometer la usabilidad.
+4. Secciones Interactivas (Reorganización)
+Hero Section (Sección principal):
+Elemento animado central (como el skater, pero futurista, podría ser un robot o una inteligencia artificial flotando).
+Descripción breve del sitio, y un botón que esté animado.
+Sección de Productos/Características:
+Los elementos como color, peso y dimensiones no se mostrarán como simples íconos estáticos. En cambio, aparecerán al hacer scroll como si se estuvieran cargando dinámicamente o flotando desde los lados.
+Recomendaciones dinámicas:
+Esta sección mostrará sugerencias o artículos relacionados. A medida que el usuario haga scroll, los elementos irán apareciendo con efectos de deslizamiento desde los lados o con un cambio de opacidad.
