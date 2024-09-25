@@ -5,7 +5,17 @@
 }
 
 body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    color: #333;
+}
+
+body.dark-mode {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
 }
 
 .font-orbitron {
@@ -25,7 +35,17 @@ body {
 }
 
 .feature-card, .recommendation-card {
-    @apply bg-gray-800 p-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+    @apply p-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+}
+
+.light-mode .feature-card, .light-mode .recommendation-card {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-mode .feature-card, .dark-mode .recommendation-card {
+    background-color: #2a2a3a;
+    color: #fff;
 }
 
 .feature-card h3, .recommendation-card h3 {
@@ -34,6 +54,13 @@ body {
 
 #navbar {
     backdrop-filter: blur(10px);
+}
+
+.light-mode #navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dark-mode #navbar {
     background-color: rgba(26, 26, 46, 0.8);
 }
 
@@ -119,4 +146,19 @@ body {
     50% {
         opacity: .5;
     }
+}
+
+/* Theme toggle button styles */
+#theme-toggle {
+    transition: background-color 0.3s;
+}
+
+.light-mode #theme-toggle {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.dark-mode #theme-toggle {
+    background-color: #2a2a3a;
+    color: #fff;
 }
