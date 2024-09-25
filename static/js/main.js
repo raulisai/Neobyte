@@ -100,10 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     data.forEach((recommendation) => {
                         const card = document.createElement("div");
                         card.className =
-                            " bg-gray-800 p-6 rounded-lg shadow-lg";
+                            "bg-gray-800 p-6 rounded-lg shadow-lg";
                         card.innerHTML = `
                             <h3 class="text-xl font-semibold mb-2">${recommendation.title}</h3>
-                            <p>${recommendation.description}</p>
+                            <p class="mb-4">${recommendation.description}</p>
+                            <a href="/recommendation/${recommendation.id}" class="text-neon-blue hover:text-neon-green transition-colors">Read More</a>
                         `;
                         recommendationsContainer.appendChild(card);
                     });
