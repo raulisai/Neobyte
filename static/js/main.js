@@ -120,9 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                gsap.to(window, {duration: 1, scrollTo: target, ease: 'power2.inOut'});
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                const target = document.querySelector(href);
+                if (target) {
+                    gsap.to(window, {duration: 1, scrollTo: target, ease: 'power2.inOut'});
+                }
             }
         });
     });
@@ -193,26 +196,26 @@ document.addEventListener('DOMContentLoaded', () => {
             // If set via local storage previously
             if (localStorage.getItem('color-theme')) {
                 if (localStorage.getItem('color-theme') === 'light') {
-                    document.body.classList.add('dark-mode');
-                    document.body.classList.remove('light-mode');
+                    document.documentElement.classList.add('dark-mode');
+                    document.documentElement.classList.remove('light-mode');
                     localStorage.setItem('color-theme', 'dark');
                     console.log('Switched to dark mode');
                 } else {
-                    document.body.classList.add('light-mode');
-                    document.body.classList.remove('dark-mode');
+                    document.documentElement.classList.add('light-mode');
+                    document.documentElement.classList.remove('dark-mode');
                     localStorage.setItem('color-theme', 'light');
                     console.log('Switched to light mode');
                 }
             } else {
                 // If NOT set via local storage previously
-                if (document.body.classList.contains('dark-mode')) {
-                    document.body.classList.add('light-mode');
-                    document.body.classList.remove('dark-mode');
+                if (document.documentElement.classList.contains('dark-mode')) {
+                    document.documentElement.classList.add('light-mode');
+                    document.documentElement.classList.remove('dark-mode');
                     localStorage.setItem('color-theme', 'light');
                     console.log('Switched to light mode');
                 } else {
-                    document.body.classList.add('dark-mode');
-                    document.body.classList.remove('light-mode');
+                    document.documentElement.classList.add('dark-mode');
+                    document.documentElement.classList.remove('light-mode');
                     localStorage.setItem('color-theme', 'dark');
                     console.log('Switched to dark mode');
                 }
@@ -224,12 +227,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set initial theme
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.body.classList.add('dark-mode');
-            document.body.classList.remove('light-mode');
+            document.documentElement.classList.add('dark-mode');
+            document.documentElement.classList.remove('light-mode');
             console.log('Initial theme set to dark mode');
         } else {
-            document.body.classList.add('light-mode');
-            document.body.classList.remove('dark-mode');
+            document.documentElement.classList.add('light-mode');
+            document.documentElement.classList.remove('dark-mode');
             console.log('Initial theme set to light mode');
         }
     } else {

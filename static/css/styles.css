@@ -8,21 +8,21 @@
     --dark-text: #fff;
 }
 
-body {
+html {
     transition: background-color 0.3s, color 0.3s;
 }
 
-body.light-mode {
+html.light-mode {
     background: linear-gradient(135deg, var(--light-bg) 0%, #e0e0e0 100%);
     color: var(--light-text);
 }
 
-body.dark-mode {
+html.dark-mode {
     background: linear-gradient(135deg, var(--dark-blue) 0%, #16213e 100%);
     color: var(--dark-text);
 }
 
-.font-orbitron {
+body {
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -80,55 +80,24 @@ body.dark-mode {
     padding: 0.5rem 1rem;
 }
 
-/* Rest of the CSS remains unchanged */
-
-#recommendations {
-    transition: background-color 0.3s, color 0.3s;
+#navbar a {
+    color: inherit;
+    transition: color 0.3s ease-in-out;
 }
 
-.light-mode #recommendations {
-    background-color: #e0e0e0;
-    color: #1a1a2e;
+.light-mode #navbar a:hover {
+    color: var(--neon-blue);
 }
 
-.dark-mode #recommendations {
-    background-color: #2a2a3a;
-    color: var(--dark-text);
-}
-
-.light-mode #recommendations h2,
-.light-mode #recommendations .recommendation-card h3 {
-    color: #0056b3;
-}
-
-.light-mode #recommendations .recommendation-card {
-    background-color: #fff;
-    color: #333;
-}
-
-.dark-mode #recommendations .recommendation-card {
-    background-color: #3a3a4a;
-    color: var(--dark-text);
-}
-
-footer {
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.light-mode footer {
-    background-color: #d0d0d0;
-    color: var(--light-text);
-}
-
-.dark-mode footer {
-    background-color: var(--dark-blue);
-    color: var(--dark-text);
+.dark-mode #navbar a:hover {
+    color: var(--neon-green);
 }
 
 #hero {
     position: relative;
     overflow: hidden;
     height: 100vh;
+    z-index: 1;
 }
 
 #hero-background {
@@ -140,6 +109,7 @@ footer {
     background-size: cover;
     background-position: center;
     will-change: transform;
+    z-index: -1;
 }
 
 #floating-elements {
@@ -149,6 +119,7 @@ footer {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 1;
 }
 
 .floating-element {
@@ -194,6 +165,7 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     will-change: transform;
+    z-index: 2;
 }
 
 .animate-pulse {
@@ -220,5 +192,55 @@ footer {
 
 .dark-mode #theme-toggle {
     background-color: #2a2a3a;
+    color: var(--dark-text);
+}
+
+#features, #recommendations {
+    position: relative;
+    z-index: 2;
+}
+
+#recommendations {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode #recommendations {
+    background-color: #e0e0e0;
+    color: #1a1a2e;
+}
+
+.dark-mode #recommendations {
+    background-color: #2a2a3a;
+    color: var(--dark-text);
+}
+
+.light-mode #recommendations h2,
+.light-mode #recommendations .recommendation-card h3 {
+    color: #0056b3;
+}
+
+.light-mode #recommendations .recommendation-card {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-mode #recommendations .recommendation-card {
+    background-color: #3a3a4a;
+    color: var(--dark-text);
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode footer {
+    background-color: #d0d0d0;
+    color: var(--light-text);
+}
+
+.dark-mode footer {
+    background-color: var(--dark-blue);
     color: var(--dark-text);
 }
