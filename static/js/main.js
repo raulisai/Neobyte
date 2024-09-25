@@ -87,19 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Recommendations section animations
-    gsap.from('.recommendation-card', {
-        opacity: 0,
-        x: -50,
-        stagger: 0.2,
-        scrollTrigger: {
-            trigger: '#recommendations',
-            start: 'top center+=100',
-            end: 'center center',
-            scrub: 1
-        }
-    });
-
     // Function to fetch and update recommendations
     function fetchRecommendations() {
         fetch('/api/recommendations')
@@ -116,6 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p>${recommendation.description}</p>
                         `;
                         recommendationsContainer.appendChild(card);
+                    });
+                    
+                    // Set up GSAP animations for recommendation cards after they are added to the DOM
+                    gsap.from('.recommendation-card', {
+                        opacity: 0,
+                        x: -50,
+                        stagger: 0.2,
+                        scrollTrigger: {
+                            trigger: '#recommendations',
+                            start: 'top center+=100',
+                            end: 'center center',
+                            scrub: 1
+                        }
                     });
                 }
             })
