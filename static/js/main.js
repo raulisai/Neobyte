@@ -10,23 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navbar transparency change on scroll
     const navbar = document.getElementById('navbar');
-    ScrollTrigger.create({
-        start: 'top -80',
-        end: 99999,
-        toggleClass: { className: 'bg-gray-900', targets: navbar }
-    });
+    if (navbar) {
+        ScrollTrigger.create({
+            start: 'top -80',
+            end: 99999,
+            toggleClass: { className: 'bg-gray-900', targets: navbar }
+        });
+    }
 
     // Hero section parallax effect
-    gsap.to('#hero-background', {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-        }
-    });
+    const heroBackground = document.getElementById('hero-background');
+    if (heroBackground) {
+        gsap.to(heroBackground, {
+            yPercent: 30,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+    }
 
     // Floating elements parallax effect
     gsap.utils.toArray('.floating-element').forEach((element, index) => {
@@ -53,31 +58,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // AI robot parallax effect
-    gsap.to('#ai-robot', {
-        y: -100,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 2
-        }
-    });
+    const aiRobot = document.getElementById('ai-robot');
+    if (aiRobot) {
+        gsap.to(aiRobot, {
+            y: -100,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 2
+            }
+        });
+    }
 
     // Hero section content animations
-    const heroContent = gsap.timeline({
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top center',
-            end: 'center center',
-            scrub: 1
-        }
-    });
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+        const heroContent = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top center',
+                end: 'center center',
+                scrub: 1
+            }
+        });
 
-    heroContent
-        .from('#hero h1', { opacity: 0, y: 50, duration: 0.5 })
-        .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3')
-        .from('#hero button', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
+        heroContent
+            .from('#hero h1', { opacity: 0, y: 50, duration: 0.5 })
+            .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3')
+            .from('#hero button', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
+    }
 
     // Features section animations with parallax
     gsap.from('.feature-card', {
@@ -110,28 +121,43 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            gsap.to(window, {duration: 1, scrollTo: target, ease: 'power2.inOut'});
+            if (target) {
+                gsap.to(window, {duration: 1, scrollTo: target, ease: 'power2.inOut'});
+            }
         });
     });
 
     // Function to fetch and update recommendations
     function fetchRecommendations() {
         fetch('/api/recommendations')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 const recommendationsContainer = document.querySelector('#recommendations .grid');
-                recommendationsContainer.innerHTML = '';
-                data.forEach(recommendation => {
-                    const card = document.createElement('div');
-                    card.className = 'recommendation-card';
-                    card.innerHTML = `
-                        <h3 class="text-xl font-semibold mb-2">${recommendation.title}</h3>
-                        <p>${recommendation.description}</p>
-                    `;
-                    recommendationsContainer.appendChild(card);
-                });
+                if (recommendationsContainer) {
+                    recommendationsContainer.innerHTML = '';
+                    data.forEach(recommendation => {
+                        const card = document.createElement('div');
+                        card.className = 'recommendation-card';
+                        card.innerHTML = `
+                            <h3 class="text-xl font-semibold mb-2">${recommendation.title}</h3>
+                            <p>${recommendation.description}</p>
+                        `;
+                        recommendationsContainer.appendChild(card);
+                    });
+                }
             })
-            .catch(error => console.error('Error fetching recommendations:', error));
+            .catch(error => {
+                console.error('Error fetching recommendations:', error);
+                const recommendationsContainer = document.querySelector('#recommendations .grid');
+                if (recommendationsContainer) {
+                    recommendationsContainer.innerHTML = '<p>Failed to load recommendations. Please try again later.</p>';
+                }
+            });
     }
 
     // Fetch recommendations on page load
@@ -148,50 +174,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-    // Change the icons inside the button based on previous settings
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        themeToggleLightIcon.classList.remove('hidden');
-    } else {
-        themeToggleDarkIcon.classList.remove('hidden');
-    }
-
-    function toggleTheme() {
-        // Toggle icons inside button
-        themeToggleDarkIcon.classList.toggle('hidden');
-        themeToggleLightIcon.classList.toggle('hidden');
-
-        // If set via local storage previously
-        if (localStorage.getItem('color-theme')) {
-            if (localStorage.getItem('color-theme') === 'light') {
-                document.body.classList.add('dark-mode');
-                document.body.classList.remove('light-mode');
-                localStorage.setItem('color-theme', 'dark');
-            } else {
-                document.body.classList.add('light-mode');
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('color-theme', 'light');
-            }
+    if (themeToggleBtn && themeToggleDarkIcon && themeToggleLightIcon) {
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
         } else {
-            // If NOT set via local storage previously
-            if (document.body.classList.contains('dark-mode')) {
-                document.body.classList.add('light-mode');
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('color-theme', 'light');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        function toggleTheme() {
+            // Toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // If set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
             } else {
-                document.body.classList.add('dark-mode');
-                document.body.classList.remove('light-mode');
-                localStorage.setItem('color-theme', 'dark');
+                // If NOT set via local storage previously
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
             }
         }
-    }
 
-    themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtn.addEventListener('click', toggleTheme);
 
-    // Set initial theme
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.add('light-mode');
+        // Set initial theme
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     }
 });
 
