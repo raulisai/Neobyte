@@ -17,7 +17,7 @@
                 <a href="#" class="text-2xl font-bold text-neon-blue">AI Channel</a>
                 <ul class="flex space-x-6 items-center">
                     <li><a href="#hero" class="hover:text-neon-blue transition-colors">Home</a></li>
-                    <li><a href="#features" class="hover:text-neon-blue transition-colors">Features</a></li>
+                    <li><a href="#articles" class="hover:text-neon-blue transition-colors">Articles</a></li>
                     <li><a href="#recommendations" class="hover:text-neon-blue transition-colors">Recommendations</a></li>
                     <li>
                         <button id="theme-toggle" class="p-2 rounded-full bg-gray-700 dark:bg-gray-200">
@@ -42,9 +42,9 @@
         <div class="container mx-auto px-6 text-center relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold mb-8">Welcome to the Future of AI</h1>
             <p class="text-xl md:text-2xl mb-12">Explore the cutting-edge world of artificial intelligence</p>
-            <button class="bg-neon-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-neon-green transition-colors duration-300 animate-pulse">
+            <a href="#articles" class="bg-neon-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-neon-green transition-colors duration-300 animate-pulse">
                 Discover More
-            </button>
+            </a>
         </div>
         <div id="ai-robot" class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
             <img src="{{ url_for('static', filename='images/ai_robot.svg') }}" alt="AI Robot" class="w-64 h-64">
@@ -52,22 +52,22 @@
         <div id="three-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
     </section>
 
-    <section id="features" class="py-20">
+    <section id="articles" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-12 text-center">Key Features</h2>
+            <h2 class="text-4xl font-bold mb-12 text-center">Latest Articles</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="feature-card">
-                    <h3 class="text-2xl font-semibold mb-4">Advanced AI</h3>
-                    <p>Cutting-edge artificial intelligence algorithms powering our technology.</p>
+                {% for article in articles %}
+                <div class="article-card">
+                    <h3 class="text-2xl font-semibold mb-4">{{ article.title }}</h3>
+                    <p class="mb-4">{{ article.content[:100] }}...</p>
+                    <a href="{{ url_for('article_detail', article_id=article.id) }}" class="text-neon-blue hover:text-neon-green transition-colors">Read More</a>
                 </div>
-                <div class="feature-card">
-                    <h3 class="text-2xl font-semibold mb-4">Machine Learning</h3>
-                    <p>Self-improving systems that adapt to new data and challenges.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="text-2xl font-semibold mb-4">Neural Networks</h3>
-                    <p>Complex interconnected systems mimicking human brain function.</p>
-                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-12">
+                <a href="{{ url_for('articles_page') }}" class="bg-neon-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-neon-green transition-colors duration-300">
+                    View All Articles
+                </a>
             </div>
         </div>
     </section>
@@ -88,7 +88,7 @@
 
     <footer class="bg-gray-900 py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2023 AI Channel. All rights reserved.</p>
+            <p>&copy; 2024 AI Channel. All rights reserved.</p>
         </div>
     </footer>
 
