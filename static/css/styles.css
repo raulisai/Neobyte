@@ -24,6 +24,7 @@ html.dark-mode {
 
 body {
     font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .text-neon-blue {
@@ -38,21 +39,21 @@ body {
     background-color: var(--neon-green);
 }
 
-.feature-card, .recommendation-card {
-    @apply p-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+.article-card, .recommendation-card {
+    @apply p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105;
 }
 
-.light-mode .feature-card, .light-mode .recommendation-card {
+.light-mode .article-card, .light-mode .recommendation-card {
     background-color: #fff;
     color: var(--light-text);
 }
 
-.dark-mode .feature-card, .dark-mode .recommendation-card {
+.dark-mode .article-card, .dark-mode .recommendation-card {
     background-color: #2a2a3a;
     color: var(--dark-text);
 }
 
-.feature-card h3, .recommendation-card h3 {
+.article-card h3, .recommendation-card h3 {
     @apply text-neon-blue;
 }
 
@@ -195,13 +196,20 @@ body {
     color: var(--dark-text);
 }
 
-#features, #recommendations {
+#articles, #recommendations {
     position: relative;
     z-index: 2;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-#recommendations {
-    transition: background-color 0.3s, color 0.3s;
+.light-mode #articles {
+    background-color: #fff;
+    color: var(--light-text);
+}
+
+.dark-mode #articles {
+    background-color: #1a1a2e;
+    color: var(--dark-text);
 }
 
 .light-mode #recommendations {
@@ -217,6 +225,11 @@ body {
 .light-mode #recommendations h2,
 .light-mode #recommendations .recommendation-card h3 {
     color: #0056b3;
+}
+
+.dark-mode #recommendations h2,
+.dark-mode #recommendations .recommendation-card h3 {
+    color: var(--neon-blue);
 }
 
 .light-mode #recommendations .recommendation-card {
@@ -243,4 +256,9 @@ footer {
 .dark-mode footer {
     background-color: var(--dark-blue);
     color: var(--dark-text);
+}
+
+/* Ensure smooth transitions for all elements */
+* {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }

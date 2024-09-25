@@ -193,39 +193,77 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
 
-            // If set via local storage previously
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark-mode');
-                    document.documentElement.classList.remove('light-mode');
-                    localStorage.setItem('color-theme', 'dark');
-                    console.log('Switched to dark mode');
-                } else {
-                    document.documentElement.classList.add('light-mode');
-                    document.documentElement.classList.remove('dark-mode');
-                    localStorage.setItem('color-theme', 'light');
-                    console.log('Switched to light mode');
-                }
+            // Toggle dark mode on html element
+            document.documentElement.classList.toggle('dark-mode');
+            document.documentElement.classList.toggle('light-mode');
+
+            // Update localStorage
+            if (document.documentElement.classList.contains('dark-mode')) {
+                localStorage.setItem('color-theme', 'dark');
+                console.log('Switched to dark mode');
             } else {
-                // If NOT set via local storage previously
-                if (document.documentElement.classList.contains('dark-mode')) {
-                    document.documentElement.classList.add('light-mode');
-                    document.documentElement.classList.remove('dark-mode');
-                    localStorage.setItem('color-theme', 'light');
-                    console.log('Switched to light mode');
-                } else {
-                    document.documentElement.classList.add('dark-mode');
-                    document.documentElement.classList.remove('light-mode');
-                    localStorage.setItem('color-theme', 'dark');
-                    console.log('Switched to dark mode');
-                }
+                localStorage.setItem('color-theme', 'light');
+                console.log('Switched to light mode');
             }
+
+            // Update specific elements
+            updateThemeElements();
+        }
+
+        function updateThemeElements() {
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            
+            // Update navbar
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                navbar.classList.toggle('bg-gray-800', isDarkMode);
+                navbar.classList.toggle('bg-white', !isDarkMode);
+            }
+
+            // Update hero section
+            const hero = document.getElementById('hero');
+            if (hero) {
+                hero.classList.toggle('bg-gray-900', isDarkMode);
+                hero.classList.toggle('bg-gray-100', !isDarkMode);
+            }
+
+            // Update articles section
+            const articles = document.getElementById('articles');
+            if (articles) {
+                articles.classList.toggle('bg-gray-800', isDarkMode);
+                articles.classList.toggle('bg-white', !isDarkMode);
+            }
+
+            // Update recommendations section
+            const recommendations = document.getElementById('recommendations');
+            if (recommendations) {
+                recommendations.classList.toggle('bg-gray-700', isDarkMode);
+                recommendations.classList.toggle('bg-gray-200', !isDarkMode);
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.classList.toggle('bg-gray-900', isDarkMode);
+                footer.classList.toggle('bg-gray-300', !isDarkMode);
+            }
+
+            // Update text colors
+            document.body.classList.toggle('text-white', isDarkMode);
+            document.body.classList.toggle('text-gray-900', !isDarkMode);
 
             // Update article cards
             const articleCards = document.querySelectorAll('.article-card');
             articleCards.forEach(card => {
-                card.classList.toggle('dark:bg-gray-800');
-                card.classList.toggle('dark:text-white');
+                card.classList.toggle('bg-gray-700', isDarkMode);
+                card.classList.toggle('bg-white', !isDarkMode);
+            });
+
+            // Update recommendation cards
+            const recommendationCards = document.querySelectorAll('.recommendation-card');
+            recommendationCards.forEach(card => {
+                card.classList.toggle('bg-gray-600', isDarkMode);
+                card.classList.toggle('bg-gray-100', !isDarkMode);
             });
         }
 
@@ -242,6 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.classList.remove('dark-mode');
             console.log('Initial theme set to light mode');
         }
+
+        // Apply initial theme to elements
+        updateThemeElements();
     } else {
         console.log('Theme toggle elements not found');
     }
