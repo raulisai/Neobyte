@@ -10,7 +10,46 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleClass: { className: 'bg-gray-900', targets: navbar }
     });
 
-    // Hero section animations
+    // Hero section parallax effect
+    gsap.to('#hero-background', {
+        yPercent: 50,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        }
+    });
+
+    // Floating elements parallax effect
+    gsap.utils.toArray('#floating-elements > div').forEach(element => {
+        gsap.to(element, {
+            y: Math.random() * 100 - 50,
+            x: Math.random() * 100 - 50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+    });
+
+    // AI robot parallax effect
+    gsap.to('#ai-robot', {
+        y: -100,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2
+        }
+    });
+
+    // Hero section content animations
     gsap.from('#hero h1', { 
         opacity: 0, 
         y: 50, 
@@ -43,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Features section animations
+    // Features section animations with parallax
     gsap.from('.feature-card', {
         opacity: 0,
         y: 50,
@@ -51,11 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2,
         scrollTrigger: {
             trigger: '#features',
-            start: 'top center+=100'
+            start: 'top center+=100',
+            end: 'bottom center',
+            scrub: 1
         }
     });
 
-    // Recommendations section animations
+    // Recommendations section animations with parallax
     gsap.from('.recommendation-card', {
         opacity: 0,
         x: -50,
@@ -63,7 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2,
         scrollTrigger: {
             trigger: '#recommendations',
-            start: 'top center+=100'
+            start: 'top center+=100',
+            end: 'bottom center',
+            scrub: 1
         }
     });
 

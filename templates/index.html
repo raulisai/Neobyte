@@ -25,7 +25,13 @@
     </nav>
 
     <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="container mx-auto px-6 text-center">
+        <div id="hero-background" class="absolute top-0 left-0 w-full h-full bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='images/ai_background.jpg') }}');"></div>
+        <div id="floating-elements" class="absolute top-0 left-0 w-full h-full">
+            <div class="circle"></div>
+            <div class="hexagon"></div>
+            <div class="line"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold mb-8">Welcome to the Future of AI</h1>
             <p class="text-xl md:text-2xl mb-12">Explore the cutting-edge world of artificial intelligence</p>
             <button class="bg-neon-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-neon-green transition-colors duration-300 animate-pulse">
