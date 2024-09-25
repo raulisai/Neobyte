@@ -19,16 +19,16 @@
     <body class="bg-gray-900 text-white font-orbitron">
         <nav
             id="navbar"
-            class="fixed top-4 left-0 right-0 z-50 transition-all duration-300"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         >
             <div
-                class="container mx-auto px-6 py-3 bg-gray-800 bg-opacity-80 rounded-full"
+                class="container mx-auto px-4 sm:px-6 py-3 bg-gray-800 bg-opacity-80 rounded-full"
             >
-                <div class="flex justify-between items-center w-full">
-                    <a href="#" class="text-2xl font-bold text-neon-blue"
+                <div class="flex flex-col sm:flex-row justify-between items-center w-full">
+                    <a href="#" class="text-2xl font-bold text-neon-blue mb-2 sm:mb-0"
                         >NeoByte</a
                     >
-                    <ul class="flex space-x-6 items-center">
+                    <ul class="flex flex-wrap justify-center space-x-4 sm:space-x-6 items-center">
                         <li>
                             <a
                                 href="#hero"
@@ -88,7 +88,7 @@
 
         <section
             id="hero"
-            class="min-h-screen flex items-center justify-center relative overflow-hidden"
+            class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-0"
         >
             <div
                 id="hero-background"
@@ -120,19 +120,19 @@
                     style="top: 10%; right: 25%"
                 ></div>
             </div>
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <h1 class="text-5xl md:text-7xl font-bold mb-8">
+            <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-8">
                     Welcome to the Future of AI
                 </h1>
-                <p class="text-5xl md:text-2xl mb-12">
+                <p class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12">
                     Explore the cutting-edge world of artificial intelligence
                 </p>
-                <section class="social-media mt-12">
-                    <h2 class="text-2xl font-bold mb-6">Join our Community</h2>
-                    <div class="flex justify-center space-x-4">
+                <section class="social-media mt-8 sm:mt-12">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Join our Community</h2>
+                    <div class="flex flex-wrap justify-center space-x-2 sm:space-x-4">
                         <a
                             href="https://www.youtube.com"
-                            class="text-neon-pink px-4 py-2 rounded-full border border-neon-pink hover:text-neon-green transition-colors duration-300"
+                            class="text-neon-pink px-4 py-2 rounded-full border border-neon-pink hover:text-neon-green transition-colors duration-300 mb-2 sm:mb-0"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -140,7 +140,7 @@
                         </a>
                         <a
                             href="https://github.com"
-                            class="text-neon-blue px-4 py-2 rounded-full border border-neon-blue hover:text-neon-green transition-colors duration-300"
+                            class="text-neon-blue px-4 py-2 rounded-full border border-neon-blue hover:text-neon-green transition-colors duration-300 mb-2 sm:mb-0"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -148,7 +148,7 @@
                         </a>
                         <a
                             href="https://discord.com"
-                            class="text-neon-purple px-4 py-2 rounded-full border border-neon-purple hover:text-neon-green transition-colors duration-300"
+                            class="text-neon-purple px-4 py-2 rounded-full border border-neon-purple hover:text-neon-green transition-colors duration-300 mb-2 sm:mb-0"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -156,7 +156,7 @@
                         </a>
                         <a
                             href="https://telegram.org"
-                            class="text-neon-cyan px-4 py-2 rounded-full border border-neon-cyan hover:text-neon-green transition-colors duration-300"
+                            class="text-neon-cyan px-4 py-2 rounded-full border border-neon-cyan hover:text-neon-green transition-colors duration-300 mb-2 sm:mb-0"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -172,7 +172,7 @@
                 <img
                     src="{{ url_for('static', filename='images/ai_robot.svg') }}"
                     alt="AI Robot"
-                    class="w-64 h-64"
+                    class="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64"
                 />
             </div>
             <div
@@ -181,12 +181,12 @@
             ></div>
         </section>
 
-        <section id="articles" class="py-20 scroll-animate">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold mb-12 text-center">
+        <section id="articles" class="py-16 sm:py-20 scroll-animate">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">
                     Latest Articles
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
                     {% for article in articles %}
                     <div class="article-card">
                         <div class="card-header relative">
@@ -201,7 +201,7 @@
                             >
                         </div>
                         <div class="card-body">
-                            <h3 class="text-2xl font-semibold mb-4">
+                            <h3 class="text-xl sm:text-2xl font-semibold mb-4">
                                 {{ article.title }}
                             </h3>
                             <p class="mb-4">{{ article.content[:100] }}...</p>
@@ -237,10 +237,10 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="text-center mt-12">
+                <div class="text-center mt-8 sm:mt-12">
                     <a
                         href="{{ url_for('articles_page') }}"
-                        class="bg-neon-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-neon-green transition-colors duration-300"
+                        class="bg-neon-blue text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold hover:bg-neon-green transition-colors duration-300"
                     >
                         View All Articles
                     </a>
@@ -248,10 +248,10 @@
             </div>
         </section>
 
-        <section id="recommendations" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <div class="flex justify-between items-center mb-12">
-                    <h2 class="text-4xl font-bold">Recommended Content</h2>
+        <section id="recommendations" class="py-16 sm:py-20 bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-0">Recommended Content</h2>
                     <button
                         id="refresh-recommendations"
                         class="bg-neon-blue text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-neon-green transition-colors duration-300"
@@ -260,7 +260,7 @@
                     </button>
                 </div>
                 <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-animate"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 scroll-animate"
                     id="recommendations-container"
                 >
                     <!-- Recommendations will be dynamically inserted here -->
@@ -268,10 +268,8 @@
             </div>
         </section>
 
-        <script></script>
-
         <footer class="bg-gray-900 py-8">
-            <div class="container mx-auto px-6 text-center">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
                 <p>&copy; 2024 Neobyte. All rights reserved.</p>
             </div>
         </footer>
@@ -283,7 +281,6 @@
         <script
             src="{{ url_for('static', filename='js/3d_elements.js') }}"
             type="module"
-            fetchRecommendations()
         ></script>
     </body>
 </html>

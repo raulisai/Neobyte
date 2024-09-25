@@ -56,3 +56,56 @@ body {
     height: 100%;
     z-index: -1;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #navbar {
+        padding: 0.5rem;
+    }
+
+    #navbar .container {
+        flex-direction: column;
+    }
+
+    #navbar ul {
+        margin-top: 1rem;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #hero p {
+        font-size: 1rem;
+    }
+
+    .social-media .flex {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-media a {
+        margin: 0.5rem;
+    }
+
+    #articles .grid,
+    #recommendations .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-card,
+    .recommendation-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    #hero h1 {
+        font-size: 3.5rem;
+    }
+
+    #articles .grid,
+    #recommendations .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

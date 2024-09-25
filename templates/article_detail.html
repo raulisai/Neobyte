@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body class="bg-gray-900 text-white font-orbitron">
-    <nav id="navbar" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-3 bg-gray-800 bg-opacity-80 rounded-full">
-            <div class="flex justify-between items-center">
-                <a href="{{ url_for('index') }}" class="text-2xl font-bold text-neon-blue">AI Channel</a>
-                <ul class="flex space-x-6 items-center">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-3 bg-gray-800 bg-opacity-80 rounded-full">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <a href="{{ url_for('index') }}" class="text-2xl font-bold text-neon-blue mb-2 sm:mb-0">AI Channel</a>
+                <ul class="flex flex-wrap justify-center space-x-2 sm:space-x-6 items-center">
                     <li><a href="{{ url_for('index') }}" class="hover:text-neon-blue transition-colors">Home</a></li>
                     <li><a href="{{ url_for('articles_page') }}" class="hover:text-neon-blue transition-colors">Articles</a></li>
                     <li>
@@ -27,22 +27,22 @@
         </div>
     </nav>
 
-    <main class="container mx-auto px-6 py-20">
-        <article class="bg-gray-800 p-8 rounded-lg shadow-lg">
-            <h1 class="text-4xl font-bold mb-6">{{ article.title }}</h1>
-            <div class="flex justify-between items-center mb-8">
-                <span class="text-sm text-gray-400">By {{ article.author }}</span>
+    <main class="container mx-auto px-4 sm:px-6 py-20 sm:py-24">
+        <article class="bg-gray-800 p-4 sm:p-8 rounded-lg shadow-lg">
+            <h1 class="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6">{{ article.title }}</h1>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8">
+                <span class="text-sm text-gray-400 mb-2 sm:mb-0">By {{ article.author }}</span>
                 <span class="text-sm text-gray-400">{{ article.date }}</span>
             </div>
-            <div class="prose prose-invert max-w-none">
+            <div class="prose prose-invert max-w-none text-sm sm:text-base">
                 {{ article.content | safe }}
             </div>
         </article>
     </main>
 
-    <footer class="bg-gray-800 py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 AI Channel. All rights reserved.</p>
+    <footer class="bg-gray-800 py-6 sm:py-8">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <p class="text-sm sm:text-base">&copy; 2024 AI Channel. All rights reserved.</p>
         </div>
     </footer>
 
