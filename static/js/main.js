@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hero section parallax effect
     gsap.to('#hero-background', {
-        yPercent: 50,
+        yPercent: 30,
         ease: 'none',
         scrollTrigger: {
             trigger: '#hero',
@@ -23,17 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Floating elements parallax effect
-    gsap.utils.toArray('#floating-elements > div').forEach(element => {
+    gsap.utils.toArray('.floating-element').forEach((element, index) => {
+        const depth = index * 0.2 + 0.5; // Creates a depth effect
         gsap.to(element, {
-            y: Math.random() * 100 - 50,
-            x: Math.random() * 100 - 50,
+            y: () => -ScrollTrigger.maxScroll(window) * depth,
             ease: 'none',
             scrollTrigger: {
                 trigger: '#hero',
                 start: 'top top',
                 end: 'bottom top',
-                scrub: 1
+                scrub: true,
+                invalidateOnRefresh: true
             }
+        });
+
+        // Add subtle rotation to floating elements
+        gsap.to(element, {
+            rotation: Math.random() * 360,
+            duration: gsap.utils.random(20, 60),
+            repeat: -1,
+            ease: 'none'
         });
     });
 
@@ -50,48 +59,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Hero section content animations
-    gsap.from('#hero h1', { 
-        opacity: 0, 
-        y: 50, 
-        duration: 1, 
+    const heroContent = gsap.timeline({
         scrollTrigger: {
             trigger: '#hero',
-            start: 'top center'
+            start: 'top center',
+            end: 'center center',
+            scrub: 1
         }
     });
 
-    gsap.from('#hero p', { 
-        opacity: 0, 
-        y: 50, 
-        duration: 1, 
-        delay: 0.5,
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top center'
-        }
-    });
-
-    gsap.from('#hero button', { 
-        opacity: 0, 
-        y: 50, 
-        duration: 1, 
-        delay: 1,
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top center'
-        }
-    });
+    heroContent
+        .from('#hero h1', { opacity: 0, y: 50, duration: 0.5 })
+        .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3')
+        .from('#hero button', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
 
     // Features section animations with parallax
     gsap.from('.feature-card', {
         opacity: 0,
         y: 50,
-        duration: 0.8,
         stagger: 0.2,
         scrollTrigger: {
             trigger: '#features',
             start: 'top center+=100',
-            end: 'bottom center',
+            end: 'center center',
             scrub: 1
         }
     });
@@ -100,12 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.from('.recommendation-card', {
         opacity: 0,
         x: -50,
-        duration: 0.8,
         stagger: 0.2,
         scrollTrigger: {
             trigger: '#recommendations',
             start: 'top center+=100',
-            end: 'bottom center',
+            end: 'center center',
             scrub: 1
         }
     });
@@ -114,9 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            gsap.to(window, {duration: 1, scrollTo: target, ease: 'power2.inOut'});
         });
     });
 });

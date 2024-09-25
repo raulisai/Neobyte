@@ -27,9 +27,11 @@
     <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div id="hero-background" class="absolute top-0 left-0 w-full h-full bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='images/ai_background.jpg') }}');"></div>
         <div id="floating-elements" class="absolute top-0 left-0 w-full h-full">
-            <div class="circle"></div>
-            <div class="hexagon"></div>
-            <div class="line"></div>
+            <div class="floating-element circle" style="top: 20%; left: 10%;"></div>
+            <div class="floating-element hexagon" style="top: 60%; right: 15%;"></div>
+            <div class="floating-element line" style="top: 40%; right: 30%;"></div>
+            <div class="floating-element square" style="bottom: 30%; left: 20%;"></div>
+            <div class="floating-element circle" style="top: 10%; right: 25%;"></div>
         </div>
         <div class="container mx-auto px-6 text-center relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold mb-8">Welcome to the Future of AI</h1>
