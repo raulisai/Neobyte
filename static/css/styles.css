@@ -4,7 +4,7 @@
     --neon-violet: #bc13fe;
     --light-bg: #f0f0f0;
     --light-text: #333;
-    --dark-bg: #1a1a2e;
+    --dark-blue: #1a1a2e;
     --dark-text: #fff;
 }
 
@@ -18,7 +18,7 @@ body.light-mode {
 }
 
 body.dark-mode {
-    background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
+    background: linear-gradient(135deg, var(--dark-blue) 0%, #16213e 100%);
     color: var(--dark-text);
 }
 
@@ -75,7 +75,7 @@ body.dark-mode {
 
 .light-mode #recommendations {
     background-color: #e0e0e0;
-    color: var(--light-text);
+    color: #1a1a2e;
 }
 
 .dark-mode #recommendations {
@@ -85,7 +85,17 @@ body.dark-mode {
 
 .light-mode #recommendations h2,
 .light-mode #recommendations .recommendation-card h3 {
-    color: var(--neon-blue);
+    color: #0056b3;
+}
+
+.light-mode #recommendations .recommendation-card {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-mode #recommendations .recommendation-card {
+    background-color: #3a3a4a;
+    color: var(--dark-text);
 }
 
 /* Updated Footer styles */
@@ -99,7 +109,7 @@ footer {
 }
 
 .dark-mode footer {
-    background-color: var(--dark-bg);
+    background-color: var(--dark-blue);
     color: var(--dark-text);
 }
 
