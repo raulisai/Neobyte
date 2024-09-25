@@ -87,16 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
         heroContent
             .from('#hero h1', { opacity: 0, y: 50, duration: 0.5 })
             .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3')
-            .from('#hero button', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
+            .from('#hero a', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
     }
 
-    // Features section animations with parallax
-    gsap.from('.feature-card', {
+    // Articles section animations with parallax
+    gsap.from('.article-card', {
         opacity: 0,
         y: 50,
         stagger: 0.2,
         scrollTrigger: {
-            trigger: '#features',
+            trigger: '#articles',
             start: 'top center+=100',
             end: 'center center',
             scrub: 1
@@ -220,6 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Switched to dark mode');
                 }
             }
+
+            // Update article cards
+            const articleCards = document.querySelectorAll('.article-card');
+            articleCards.forEach(card => {
+                card.classList.toggle('dark:bg-gray-800');
+                card.classList.toggle('dark:text-white');
+            });
         }
 
         themeToggleBtn.addEventListener('click', toggleTheme);
