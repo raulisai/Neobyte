@@ -60,25 +60,31 @@ body {
 #navbar {
     width: 90%;
     max-width: 1200px;
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
 
 #navbar .container {
     border-radius: 9999px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
 }
 
 .light-mode #navbar .container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .dark-mode #navbar .container {
-    background-color: rgba(26, 26, 46, 0.8);
+    background-color: rgba(26, 26, 46, 0.9);
 }
 
-#navbar.scrolled {
-    padding: 0.5rem 1rem;
+#navbar.scrolled .container {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 #navbar a {
