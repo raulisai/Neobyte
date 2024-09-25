@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // GSAP ScrollTrigger setup
     gsap.registerPlugin(ScrollTrigger);
 
-    // Navbar transparency change on scroll
+    // Navbar transparency and size change on scroll
     const navbar = document.getElementById('navbar');
     if (navbar) {
         ScrollTrigger.create({
             start: 'top -80',
             end: 99999,
-            toggleClass: { className: 'bg-gray-900', targets: navbar }
+            toggleClass: { className: 'scrolled', targets: navbar }
         });
     }
 

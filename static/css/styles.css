@@ -57,18 +57,31 @@ body.dark-mode {
 }
 
 #navbar {
+    width: 90%;
+    max-width: 1200px;
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
 }
 
-.light-mode #navbar {
+#navbar .container {
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode #navbar .container {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.dark-mode #navbar {
+.dark-mode #navbar .container {
     background-color: rgba(26, 26, 46, 0.8);
 }
 
-/* Updated Recommended Content section styles */
+#navbar.scrolled {
+    padding: 0.5rem 1rem;
+}
+
+/* Rest of the CSS remains unchanged */
+
 #recommendations {
     transition: background-color 0.3s, color 0.3s;
 }
@@ -98,7 +111,6 @@ body.dark-mode {
     color: var(--dark-text);
 }
 
-/* Updated Footer styles */
 footer {
     transition: background-color 0.3s, color 0.3s;
 }
@@ -112,8 +124,6 @@ footer {
     background-color: var(--dark-blue);
     color: var(--dark-text);
 }
-
-/* Rest of the CSS remains unchanged */
 
 #hero {
     position: relative;
