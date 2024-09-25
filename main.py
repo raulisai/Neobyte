@@ -1,5 +1,6 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, send_from_directory
 import random
+import os
 
 app = Flask(__name__)
 
@@ -20,6 +21,10 @@ def index():
 def get_recommendations():
     selected_recommendations = random.sample(recommendations, 3)
     return jsonify(selected_recommendations)
+
+@app.route('/node_modules/<path:filename>')
+def serve_node_modules(filename):
+    return send_from_directory(os.path.join(app.root_path, 'node_modules'), filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
