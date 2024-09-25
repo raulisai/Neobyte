@@ -17,21 +17,21 @@ articles = [
     {
         "id": 1,
         "title": "The Rise of AI in Modern Technology",
-        "content": "Artificial Intelligence has become an integral part of modern technology...",
+        "content": "Artificial Intelligence has become an integral part of modern technology, transforming industries and revolutionizing the way we live and work. From smart assistants to self-driving cars, AI is pushing the boundaries of what's possible and opening up new frontiers in innovation.",
         "author": "John Doe",
         "date": "2024-09-20"
     },
     {
         "id": 2,
         "title": "Machine Learning: Transforming Industries",
-        "content": "Machine Learning is revolutionizing various industries, from healthcare to finance...",
+        "content": "Machine Learning is revolutionizing various industries, from healthcare to finance. By analyzing vast amounts of data and identifying patterns, ML algorithms are helping businesses make more informed decisions, predict trends, and automate complex processes.",
         "author": "Jane Smith",
         "date": "2024-09-22"
     },
     {
         "id": 3,
         "title": "The Ethics of AI: Challenges and Considerations",
-        "content": "As AI becomes more prevalent, we must address the ethical challenges it presents...",
+        "content": "As AI becomes more prevalent in our daily lives, we must address the ethical challenges it presents. From privacy concerns to algorithmic bias, the development and deployment of AI systems raise important questions about fairness, transparency, and accountability.",
         "author": "Alex Johnson",
         "date": "2024-09-24"
     }

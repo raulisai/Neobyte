@@ -72,15 +72,15 @@ body {
     border-radius: 9999px;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out, backdrop-filter 0.3s;
 }
 
 .light-mode #navbar .container {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode #navbar .container {
-    background-color: rgba(26, 26, 46, 0.9);
+    background-color: rgba(26, 26, 46, 0.1);
 }
 
 #navbar.scrolled .container {
@@ -266,5 +266,5 @@ footer {
 
 /* Ensure smooth transitions for all elements */
 * {
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
 }
