@@ -148,7 +148,6 @@ body.dark-mode {
     }
 }
 
-/* Theme toggle button styles */
 #theme-toggle {
     transition: background-color 0.3s;
 }

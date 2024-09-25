@@ -175,6 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
     if (themeToggleBtn && themeToggleDarkIcon && themeToggleLightIcon) {
+        console.log('Theme toggle elements found');
+
         // Change the icons inside the button based on previous settings
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             themeToggleLightIcon.classList.remove('hidden');
@@ -183,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function toggleTheme() {
+            console.log('Toggle theme function called');
             // Toggle icons inside button
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
@@ -190,32 +193,47 @@ document.addEventListener('DOMContentLoaded', () => {
             // If set via local storage previously
             if (localStorage.getItem('color-theme')) {
                 if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
+                    document.body.classList.add('dark-mode');
+                    document.body.classList.remove('light-mode');
                     localStorage.setItem('color-theme', 'dark');
+                    console.log('Switched to dark mode');
                 } else {
-                    document.documentElement.classList.remove('dark');
+                    document.body.classList.add('light-mode');
+                    document.body.classList.remove('dark-mode');
                     localStorage.setItem('color-theme', 'light');
+                    console.log('Switched to light mode');
                 }
             } else {
                 // If NOT set via local storage previously
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
+                if (document.body.classList.contains('dark-mode')) {
+                    document.body.classList.add('light-mode');
+                    document.body.classList.remove('dark-mode');
                     localStorage.setItem('color-theme', 'light');
+                    console.log('Switched to light mode');
                 } else {
-                    document.documentElement.classList.add('dark');
+                    document.body.classList.add('dark-mode');
+                    document.body.classList.remove('light-mode');
                     localStorage.setItem('color-theme', 'dark');
+                    console.log('Switched to dark mode');
                 }
             }
         }
 
         themeToggleBtn.addEventListener('click', toggleTheme);
+        console.log('Theme toggle event listener attached');
 
         // Set initial theme
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+            console.log('Initial theme set to dark mode');
         } else {
-            document.documentElement.classList.remove('dark');
+            document.body.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+            console.log('Initial theme set to light mode');
         }
+    } else {
+        console.log('Theme toggle elements not found');
     }
 });
 
