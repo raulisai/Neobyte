@@ -1,4 +1,9 @@
+import { init as init3D } from './3d_elements.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize 3D elements
+    init3D();
+
     // GSAP ScrollTrigger setup
     gsap.registerPlugin(ScrollTrigger);
 
