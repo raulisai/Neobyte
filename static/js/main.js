@@ -57,21 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // AI robot parallax effect
-    const aiRobot = document.getElementById('ai-robot');
-    if (aiRobot) {
-        gsap.to(aiRobot, {
-            y: -100,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '#hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 2
-            }
-        });
-    }
-
     // Hero section content animations
     const heroSection = document.getElementById('hero');
     if (heroSection) {
@@ -89,20 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
     }
 
-    // Articles section animations with parallax
-    gsap.from('.article-card', {
+    // Features section animations
+    gsap.from('.feature-card', {
         opacity: 0,
         y: 50,
         stagger: 0.2,
         scrollTrigger: {
-            trigger: '#articles',
+            trigger: '#features',
             start: 'top center+=100',
             end: 'center center',
             scrub: 1
         }
     });
 
-    // Recommendations section animations with parallax
+    // Recommendations section animations
     gsap.from('.recommendation-card', {
         opacity: 0,
         x: -50,

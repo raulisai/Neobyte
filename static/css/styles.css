@@ -56,13 +56,3 @@ body {
     height: 100%;
     z-index: -1;
 }
-
-.light-mode {
-    background-color: var(--light-bg);
-    color: var(--light-text);
-}
-
-.dark-mode {
-    background-color: var(--dark-blue);
-    color: var(--dark-text);
-}
