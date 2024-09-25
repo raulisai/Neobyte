@@ -11,41 +11,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body class="bg-gray-900 text-white font-orbitron">
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50">
-        <div class="container mx-auto px-6 py-3">
+    <nav id="navbar" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 bg-gray-800 bg-opacity-80 rounded-full">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold text-neon-blue">AI Channel</a>
-                <ul class="flex space-x-6">
+                <ul class="flex space-x-6 items-center">
                     <li><a href="#" class="hover:text-neon-blue transition-colors">Home</a></li>
-                    <li><a href="#features" class="hover:text-neon-blue transition-colors">Features</a></li>
+                    <li><a href="#articles" class="hover:text-neon-blue transition-colors">Articles</a></li>
                     <li><a href="#recommendations" class="hover:text-neon-blue transition-colors">Recommendations</a></li>
+                    <li>
+                        <button id="theme-toggle" class="p-2 rounded-full bg-gray-700 dark:bg-gray-200">
+                            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                            <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <main class="container mx-auto px-6 py-20">
-        <section id="hero" class="mb-20">
-            <h1 class="text-4xl font-bold mb-8">Welcome to AI Channel</h1>
-            <p class="mb-4">Exploring the future of technology and artificial intelligence.</p>
-            <div id="three-container"></div>
+        <section id="hero" class="mb-20 relative">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8">Welcome to the Future of AI</h1>
+                <p class="text-xl md:text-2xl mb-12">Explore the cutting-edge world of artificial intelligence</p>
+                <a href="#articles" class="bg-neon-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-neon-green transition-colors duration-300 animate-pulse">
+                    Discover More
+                </a>
+            </div>
+            <div id="ai-robot" class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+                <img src="{{ url_for('static', filename='images/ai_robot.svg') }}" alt="AI Robot" class="w-64 h-64">
+            </div>
+            <div id="three-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
         </section>
 
-        <section id="features" class="mb-20">
-            <h2 class="text-3xl font-bold mb-8">Key Features</h2>
+        <section id="articles" class="mb-20">
+            <h2 class="text-3xl font-bold mb-8">Latest Articles</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="feature-card bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Advanced AI Algorithms</h3>
-                    <p>Cutting-edge artificial intelligence algorithms for complex problem-solving.</p>
+                {% for article in articles %}
+                <div class="article-card bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">{{ article.title }}</h3>
+                    <p class="mb-4">{{ article.content[:150] }}...</p>
+                    <a href="{{ url_for('article_detail', article_id=article.id) }}" class="text-neon-blue hover:text-neon-green transition-colors">Read More</a>
                 </div>
-                <div class="feature-card bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Machine Learning Integration</h3>
-                    <p>Seamless integration of machine learning models for adaptive systems.</p>
-                </div>
-                <div class="feature-card bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Natural Language Processing</h3>
-                    <p>Advanced NLP capabilities for human-like text understanding and generation.</p>
-                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-8">
+                <a href="{{ url_for('articles_page') }}" class="bg-neon-blue text-white px-6 py-2 rounded-full hover:bg-neon-green transition-colors">View All Articles</a>
             </div>
         </section>
 
