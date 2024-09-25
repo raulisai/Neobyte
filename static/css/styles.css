@@ -2,6 +2,10 @@
     --neon-blue: #00f3ff;
     --neon-green: #39ff14;
     --neon-violet: #bc13fe;
+    --light-bg: #f0f0f0;
+    --light-text: #333;
+    --dark-bg: #1a1a2e;
+    --dark-text: #fff;
 }
 
 body {
@@ -9,13 +13,13 @@ body {
 }
 
 body.light-mode {
-    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-    color: #333;
+    background: linear-gradient(135deg, var(--light-bg) 0%, #e0e0e0 100%);
+    color: var(--light-text);
 }
 
 body.dark-mode {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: #fff;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
+    color: var(--dark-text);
 }
 
 .font-orbitron {
@@ -40,12 +44,12 @@ body.dark-mode {
 
 .light-mode .feature-card, .light-mode .recommendation-card {
     background-color: #fff;
-    color: #333;
+    color: var(--light-text);
 }
 
 .dark-mode .feature-card, .dark-mode .recommendation-card {
     background-color: #2a2a3a;
-    color: #fff;
+    color: var(--dark-text);
 }
 
 .feature-card h3, .recommendation-card h3 {
@@ -63,6 +67,43 @@ body.dark-mode {
 .dark-mode #navbar {
     background-color: rgba(26, 26, 46, 0.8);
 }
+
+/* Updated Recommended Content section styles */
+#recommendations {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode #recommendations {
+    background-color: #e0e0e0;
+    color: var(--light-text);
+}
+
+.dark-mode #recommendations {
+    background-color: #2a2a3a;
+    color: var(--dark-text);
+}
+
+.light-mode #recommendations h2,
+.light-mode #recommendations .recommendation-card h3 {
+    color: var(--neon-blue);
+}
+
+/* Updated Footer styles */
+footer {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode footer {
+    background-color: #d0d0d0;
+    color: var(--light-text);
+}
+
+.dark-mode footer {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+/* Rest of the CSS remains unchanged */
 
 #hero {
     position: relative;
@@ -154,10 +195,10 @@ body.dark-mode {
 
 .light-mode #theme-toggle {
     background-color: #f0f0f0;
-    color: #333;
+    color: var(--light-text);
 }
 
 .dark-mode #theme-toggle {
     background-color: #2a2a3a;
-    color: #fff;
+    color: var(--dark-text);
 }
