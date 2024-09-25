@@ -62,5 +62,9 @@ def article_detail(article_id):
     else:
         abort(404)
 
+@app.route('/static/css/tailwind.output.css')
+def serve_tailwind_css():
+    return send_from_directory(os.path.join(app.root_path, 'static', 'css'), 'tailwind.output.css')
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

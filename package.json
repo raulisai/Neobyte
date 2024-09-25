@@ -1,15 +1,12 @@
 {
-  "name": "modernaichannel",
+  "name": "ai-channel",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/tailwind.output.css --minify"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "three": "^0.168.0"
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
   }
 }

@@ -86,8 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         heroContent
             .from('#hero h1', { opacity: 0, y: 50, duration: 0.5 })
-            .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3')
-            .from('#hero a', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
+            .from('#hero p', { opacity: 0, y: 50, duration: 0.5 }, '-=0.3');
     }
 
     // Articles section animations with parallax
@@ -145,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     recommendationsContainer.innerHTML = '';
                     data.forEach(recommendation => {
                         const card = document.createElement('div');
-                        card.className = 'recommendation-card';
+                        card.className = 'recommendation-card bg-gray-800 p-6 rounded-lg shadow-lg';
                         card.innerHTML = `
                             <h3 class="text-xl font-semibold mb-2">${recommendation.title}</h3>
                             <p>${recommendation.description}</p>
@@ -286,6 +285,31 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.log('Theme toggle elements not found');
     }
+
+    // Scroll check for articles and recommendations sections
+    function checkSectionsVisibility() {
+        const articlesSection = document.getElementById('articles');
+        const recommendationsSection = document.getElementById('recommendations');
+
+        if (articlesSection && recommendationsSection) {
+            const articlesSectionRect = articlesSection.getBoundingClientRect();
+            const recommendationsSectionRect = recommendationsSection.getBoundingClientRect();
+
+            if (articlesSectionRect.top < window.innerHeight && articlesSectionRect.bottom >= 0) {
+                console.log('Articles section is visible');
+            }
+
+            if (recommendationsSectionRect.top < window.innerHeight && recommendationsSectionRect.bottom >= 0) {
+                console.log('Recommendations section is visible');
+            }
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', checkSectionsVisibility);
+
+    // Initial check
+    checkSectionsVisibility();
 });
 
 console.log('main.js loaded');
