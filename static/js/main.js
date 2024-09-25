@@ -1,6 +1,7 @@
 import { init as init3D } from './3d_elements.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM content loaded, initializing 3D elements');
     // Initialize 3D elements
     init3D();
 
@@ -142,3 +143,5 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshButton.addEventListener('click', fetchRecommendations);
     }
 });
+
+console.log('main.js loaded');
